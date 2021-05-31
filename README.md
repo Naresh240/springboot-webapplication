@@ -4,33 +4,26 @@
     Springboot Application
     Install Maven
 # Clone code using below command
-    git clone https://github.com/Naresh240/springboot-application-elastiBeanStack.git
-    cd springboot-application-elastiBeanStack/springboot-webapplication
+    git clone https://github.com/Naresh240/springboot-webapplication.git
+    cd springboot-webapplication
 # Build Artifact
     mvn clean install
-# Open Elastic Bean Stack Console and deploy application
-  ![image](https://user-images.githubusercontent.com/58024415/105579812-cc681d00-5dae-11eb-8f3b-7738ec47b0df.png)
+# Deploy springboot application with Tomcat
+  Tomcat Setup:
+    
+    cd /opt
+    wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.46/bin/apache-tomcat-9.0.46.tar.gz
+    cd apache-tomcat-9.0.46 tomcat
   
-  Click on Create Application
+  Start tomcat:
+    
+    cd /opt/tomcat/bin
+    ./startup.sh
+  
+  Copy springboot artifact to Webapps Directory:
+    
+    cd springboot-webapplication
+    cp target/mavewebappdemo-2.0.0-SNAPSHOT.war /opt/tomcat/webapps/mavewebappdemo.war
 
-  ![image](https://user-images.githubusercontent.com/58024415/105580546-f7547000-5db2-11eb-9242-dd37cbbbefa7.png)
-
-  Click on Create Application
-  
-  ![image](https://user-images.githubusercontent.com/58024415/105580573-27037800-5db3-11eb-8d65-d249ede10369.png)
-
-  Application is going to be deploying
-  
-  ![image](https://user-images.githubusercontent.com/58024415/105580668-c7599c80-5db3-11eb-9f92-29efdefcd59b.png)
-  
-  Click on Upload and Deploy
-  
-  ![image](https://user-images.githubusercontent.com/58024415/105580696-efe19680-5db3-11eb-8ab6-f5357099d57d.png)
-
-  Upload war file and click on Deploy
-  
-  ![image](https://user-images.githubusercontent.com/58024415/105580736-2ae3ca00-5db4-11eb-8ce7-4540cf43a8a7.png)
-
-  Click on link and check output of application
-  
-  ![image](https://user-images.githubusercontent.com/58024415/105580754-4353e480-5db4-11eb-88a2-2990dfafa878.png)
+# Check output of application
+  ![image](https://user-images.githubusercontent.com/58024415/120204004-f5f5f100-c245-11eb-8c4b-4c1128434d8e.png)
