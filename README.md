@@ -27,3 +27,10 @@
 
 # Check output of application
   ![image](https://user-images.githubusercontent.com/58024415/120204004-f5f5f100-c245-11eb-8c4b-4c1128434d8e.png)
+
+
+## Docker build
+```bash
+docker build -t tomcatdeploy:v1 .
+docker run --name tomcatdeploy-container -p 8080:8080 -d tomcatdeploy:v1
+```
