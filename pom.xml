@@ -17,8 +17,8 @@
    		</snapshotRepository>
 	</distributionManagement>
 		<properties>
-		<sonar.host.url>http://100.24.237.243:9000</sonar.host.url>
-		<sonar.login>e99708d5d6aee7ee4cebe8abf468de0cc262190a</sonar.login>
+		<sonar.host.url>http://54.158.182.147:9000</sonar.host.url>
+		<sonar.login>80754eb9225be2910196d1f0d33d148c4976f28d</sonar.login>
 	</properties>
 	
 	<dependencies>
