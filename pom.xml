@@ -13,7 +13,7 @@
 	<distributionManagement>
 		<snapshotRepository>
     		  <id>maven-snapshots</id>
-    		  <url>http://54.197.82.186:8081/repository/maven-snapshots/</url>
+    		  <url>http://ec2-54-157-128-80.compute-1.amazonaws.com:8081/repository/maven-snapshots/</url>
    		</snapshotRepository>
 	</distributionManagement>
 		<properties>
@@ -32,8 +32,11 @@
 	
 	<build>
 		<plugins>
+		<groupId>org.codehaus.sonar</groupId>
+        <version>2.5</version>
+      </plugin>
 			 <plugin>
-                            <artifactId>maven-war-plugin</artifactId>
+			 <artifactId>maven-war-plugin</artifactId>
                             <version>3.2.2</version>
                         </plugin>
 			
