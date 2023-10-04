@@ -12,10 +12,14 @@
 	
 	<distributionManagement>
 		<snapshotRepository>
-    		  <id>nexus-snapshots</id>
-    		  <url>http://54.159.177.72:8081/nexus/content/maven-snapshots/snapshots</url>
+    		  <id>maven-snapshots</id>
+    		  <url>http://ec2-54-157-128-80.compute-1.amazonaws.com:8081/repository/maven-snapshots/</url>
    		</snapshotRepository>
 	</distributionManagement>
+		<properties>
+		<sonar.host.url>http://54.158.182.147:9000</sonar.host.url>
+		<sonar.login>80754eb9225be2910196d1f0d33d148c4976f28d</sonar.login>
+	</properties>
 	
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -28,29 +32,14 @@
 	
 	<build>
 		<plugins>
+		<groupId>org.codehaus.sonar</groupId>
+        <version>2.5</version>
+      </plugin>
 			 <plugin>
-                            <artifactId>maven-war-plugin</artifactId>
+			 <artifactId>maven-war-plugin</artifactId>
                             <version>3.2.2</version>
                         </plugin>
-			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>3.0.2</version>
-					<executions>
-						<execution>
-						<id>default-deploy</id>
-						<phase>deploy</phase>
-							<goals>
-								<goal>deploy</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<serverId>nexus</serverId>
-						<nexusUrl>http://54.159.177.72:8081//nexus/</nexusUrl>
-						<skipStaging>true</skipStaging>
-					</configuration>
-			</plugin>
+			
 		</plugins>
 	</build>
 </project>
