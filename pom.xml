@@ -12,10 +12,14 @@
 	
 	<distributionManagement>
 		<snapshotRepository>
-    		  <id>nexus-snapshots</id>
-    		  <url>http://54.163.63.178:8081/repository/test/snapshots</url>
+    		  <id>maven-snapshots</id>
+    		  <url>http://54.197.82.186:8081/repository/maven-snapshots/</url>
    		</snapshotRepository>
 	</distributionManagement>
+		<properties>
+		<sonar.host.url>http://100.24.237.243:9000</sonar.host.url>
+		<sonar.login>e99708d5d6aee7ee4cebe8abf468de0cc262190a</sonar.login>
+	</properties>
 	
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -32,25 +36,7 @@
                             <artifactId>maven-war-plugin</artifactId>
                             <version>3.2.2</version>
                         </plugin>
-			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>3.0.2</version>
-					<executions>
-						<execution>
-						<id>default-deploy</id>
-						<phase>deploy</phase>
-							<goals>
-								<goal>deploy</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<serverId>nexus</serverId>
-						<nexusUrl>http://54.163.63.178:8081/repository/test/</nexusUrl>
-						<skipStaging>true</skipStaging>
-					</configuration>
-			</plugin>
+			
 		</plugins>
 	</build>
 </project>
