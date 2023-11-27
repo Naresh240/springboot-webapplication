@@ -1,4 +1,4 @@
-# Deploy web application in Elastic Bean Stack
+# Deploy web application
 
 ## Pre-Requisites
 
