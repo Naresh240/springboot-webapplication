@@ -1,13 +1,25 @@
 # Deploy web application in Elastic Bean Stack
 
 ## Pre-Requisites
-    Springboot Application
-    Install Maven
+
+```bash
+Springboot Application
+Install Maven
+```
+
 ## Clone code using below command
-    git clone https://github.com/Naresh240/springboot-webapplication.git
-    cd springboot-webapplication
+
+```bash
+git clone https://github.com/Naresh240/springboot-webapplication.git
+cd springboot-webapplication
+```
+
 ## Build Artifact
-    mvn clean install
+
+```bash
+mvn clean install
+```
+
 ## Deploy springboot application with Tomcat
   Tomcat Setup:
     
