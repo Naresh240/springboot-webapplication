@@ -1,6 +1,7 @@
 pipeline {
     agent any
     environment {
+        sonar_tool  = tool name: 'sonar-scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
         sonar_url   = "http://18.188.175.96:9000/"
         projectKey  = "springboothello"
         projectName = "springboot_project"
@@ -36,7 +37,7 @@ pipeline {
         stage("Test") {
             steps {
                 withSonarQubeEnv(installationName: 'sonarqube', credentialsId: 'sonar-token') {
-                    sh "/opt/sonar-scanner-4.4.0.2170-linux/bin/sonar-scanner \
+                    sh "${sonar_tool}/sonar-scanner \
                             -Dsonar.projectKey=hellospringboot \
                             -Dsonar.projectName=hellospringboot \
                             -Dsonar.sourceEncoding=UTF-8 \
