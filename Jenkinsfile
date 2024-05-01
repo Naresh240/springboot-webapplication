@@ -17,16 +17,29 @@ pipeline {
                 sh "mvn clean package"
             }
         }
+        // stage("Test") {
+        //     steps {
+        //         withCredentials([string(credentialsId: 'sonar-token', variable: 'token')]) {
+        //             sh '''
+        //                 mvn clean verify sonar:sonar \
+        //                     -Dsonar.projectKey=${projectKey} \
+        //                     -Dsonar.projectName=${projectName} \
+        //                     -Dsonar.host.url=${sonar_url} \
+        //                     -Dsonar.login=${token} \
+        //                     -Dsonar.sourceEncoding=UTF-8 \
+        //                     -Dsonar.sources=src \
+        //                     -Dsonar.java.binaries=target/classes
+        //             '''
+        //         }
+        //     }
+        // }/
         stage("Test") {
             steps {
-                withCredentials([string(credentialsId: 'sonar-token', variable: 'token')]) {
+                withSonarQubeEnv(installationName: 'sonarqube', credentialsId: 'sonar-token') {
                     sh '''
-                        echo "${token}"
-                        mvn clean verify sonar:sonar \
-                            -Dsonar.projectKey=${projectKey} \
-                            -Dsonar.projectName=${projectName} \
-                            -Dsonar.host.url=${sonar_url} \
-                            -Dsonar.login=${token} \
+                        ${ tool ("sonar-scanner")}/sonar-scanner \
+                            -Dsonar.projectKey=hellospringboot \
+                            -Dsonar.projectName=hellospringboot \
                             -Dsonar.sourceEncoding=UTF-8 \
                             -Dsonar.sources=src \
                             -Dsonar.java.binaries=target/classes
