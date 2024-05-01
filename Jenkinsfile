@@ -36,14 +36,12 @@ pipeline {
         stage("Test") {
             steps {
                 withSonarQubeEnv(installationName: 'sonarqube', credentialsId: 'sonar-token') {
-                    sh '''
-                        ${ tool ("sonar-scanner")}/sonar-scanner \
+                    sh "/opt/sonar-scanner-4.4.0.2170-linux/bin/sonar-scanner \
                             -Dsonar.projectKey=hellospringboot \
                             -Dsonar.projectName=hellospringboot \
                             -Dsonar.sourceEncoding=UTF-8 \
                             -Dsonar.sources=src \
-                            -Dsonar.java.binaries=target/classes
-                    '''
+                            -Dsonar.java.binaries=target/classes"
                 }
             }
         }
