@@ -10,12 +10,6 @@
 	<name>mavewebappdemo Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	
-	<distributionManagement>
-		<snapshotRepository>
-    		  <id>nexus-snapshots</id>
-    		  <url>http://54.159.177.72:8081/nexus/content/maven-snapshots/snapshots</url>
-   		</snapshotRepository>
-	</distributionManagement>
 	
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -29,28 +23,14 @@
 	<build>
 		<plugins>
 			 <plugin>
-                            <artifactId>maven-war-plugin</artifactId>
-                            <version>3.2.2</version>
-                        </plugin>
-			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>3.0.2</version>
-					<executions>
-						<execution>
-						<id>default-deploy</id>
-						<phase>deploy</phase>
-							<goals>
-								<goal>deploy</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<serverId>nexus</serverId>
-						<nexusUrl>http://54.159.177.72:8081//nexus/</nexusUrl>
-						<skipStaging>true</skipStaging>
-					</configuration>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.2</version>
 			</plugin>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.4.0.905</version>
+            </plugin>
 		</plugins>
 	</build>
 </project>
