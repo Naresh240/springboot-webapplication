@@ -19,13 +19,14 @@ pipeline {
         }
         stage("Test") {
             steps {
-                withCredentials([string(credentialsId: 'sonar-token', variable: 'sonar-token')]) {
+                withCredentials([string(credentialsId: 'sonar-token', variable: 'token')]) {
                     sh '''
+                        echo "${token}"
                         mvn clean verify sonar:sonar \
                             -Dsonar.projectKey=${projectKey} \
                             -Dsonar.projectName=${projectName} \
                             -Dsonar.host.url=${sonar_url} \
-                            -Dsonar.login=${sonar-token} \
+                            -Dsonar.login=${token} \
                             -Dsonar.sourceEncoding=UTF-8 \
                             -Dsonar.sources=src \
                             -Dsonar.java.binaries=target/classes
