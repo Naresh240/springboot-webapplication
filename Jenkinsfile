@@ -46,5 +46,20 @@ pipeline {
         //         }
         //     }
         // }
+        stage("Push_Artifact_To_Nexus") {
+            steps {
+                nexusArtifactUploader artifacts: [[artifactId: 'mavewebappdemo', \
+                                                    classifier: '', \
+                                                    file: './target/mavewebappdemo-2.0.0-SNAPSHOT.war', \
+                                                    type: 'war']], \
+                                        credentialsId: 'nexus-creds', \
+                                        groupId: 'com.tecmax.demo', \
+                                        nexusUrl: '3.129.7.233:8081', \
+                                        nexusVersion: 'nexus3', \
+                                        protocol: 'http', \
+                                        repository: 'maven-snapshots', \
+                                        version: '2.0.0-SNAPSHOT'
+            }
+        }
     }
 }
