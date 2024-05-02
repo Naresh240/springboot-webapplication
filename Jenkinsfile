@@ -1,10 +1,10 @@
 pipeline {
     agent any
     environment {
-        sonar_tool  = tool name: 'sonar-scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-        sonar_url   = "http://18.188.175.96:9000/"
+        sonar_url   = "http://18.220.93.118:9000/"
         projectKey  = "springboothello"
         projectName = "springboot_project"
+        // sonar_tool  = tool name: 'sonar-scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'        
     }
     stages {
         stage("Checkout") {
@@ -18,33 +18,33 @@ pipeline {
                 sh "mvn clean package"
             }
         }
-        // stage("Test") {
-        //     steps {
-        //         withCredentials([string(credentialsId: 'sonar-token', variable: 'token')]) {
-        //             sh '''
-        //                 mvn clean verify sonar:sonar \
-        //                     -Dsonar.projectKey=${projectKey} \
-        //                     -Dsonar.projectName=${projectName} \
-        //                     -Dsonar.host.url=${sonar_url} \
-        //                     -Dsonar.login=${token} \
-        //                     -Dsonar.sourceEncoding=UTF-8 \
-        //                     -Dsonar.sources=src \
-        //                     -Dsonar.java.binaries=target/classes
-        //             '''
-        //         }
-        //     }
-        // }/
         stage("Test") {
             steps {
-                withSonarQubeEnv(installationName: 'sonarqube', credentialsId: 'sonar-token') {
-                    sh "${sonar_tool}/sonar-scanner \
-                            -Dsonar.projectKey=hellospringboot \
-                            -Dsonar.projectName=hellospringboot \
+                withCredentials([string(credentialsId: 'sonar-token', variable: 'token')]) {
+                    sh '''
+                        mvn clean verify sonar:sonar \
+                            -Dsonar.projectKey=${projectKey} \
+                            -Dsonar.projectName=${projectName} \
+                            -Dsonar.host.url=${sonar_url} \
+                            -Dsonar.login=${token} \
                             -Dsonar.sourceEncoding=UTF-8 \
                             -Dsonar.sources=src \
-                            -Dsonar.java.binaries=target/classes"
+                            -Dsonar.java.binaries=target/classes
+                    '''
                 }
             }
         }
+        // stage("Test") {
+        //     steps {
+        //         withSonarQubeEnv(installationName: 'sonarqube', credentialsId: 'sonar-token') {
+        //             sh "${sonar_tool}/sonar-scanner \
+        //                     -Dsonar.projectKey=hellospringboot \
+        //                     -Dsonar.projectName=hellospringboot \
+        //                     -Dsonar.sourceEncoding=UTF-8 \
+        //                     -Dsonar.sources=src \
+        //                     -Dsonar.java.binaries=target/classes"
+        //         }
+        //     }
+        // }
     }
 }
