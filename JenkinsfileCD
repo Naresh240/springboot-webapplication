@@ -4,8 +4,13 @@ pipeline {
         stage("Download_Artifact") {
             steps {
                 sh '''
-                    curl -u admin:Admin#123 -X GET 'http://3.129.7.233:8081/repository/maven-snapshots/com/tecmax/demo/mavewebappdemo/2.0.0-SNAPSHOT/mavewebappdemo-2.0.0-20240502.024756-1.war -o /var/libe/jenkins/springbootweb.war'
+                    curl -u admin:Admin#123 -X GET 'http://3.129.7.233:8081/repository/maven-snapshots/com/tecmax/demo/mavewebappdemo/2.0.0-SNAPSHOT/mavewebappdemo-2.0.0-20240502.024756-1.war' -o /var/lib/jenkins/springbootweb.war
                 '''
+            }
+        }
+        stage("Deploy_to_Tomcat") {
+            steps {
+                sh "scp /var/lib/jenkins/springbootweb.war root@3.22.70.251:/opt/apache-tomcat-10.1.23/webapps/springbootweb.war"
             }
         }
     }
