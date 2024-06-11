@@ -1,4 +1,4 @@
-# Deploy web application - webhook
+# Deploy web application
 
 ## Pre-Requisites
 
