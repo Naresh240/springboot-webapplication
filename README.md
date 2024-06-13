@@ -1,4 +1,4 @@
-# Deploy web application  - update
+# Deploy web application
 
 ## Pre-Requisites
 
