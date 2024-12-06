@@ -11,10 +11,14 @@
 	<url>http://maven.apache.org</url>
 	
 	<distributionManagement>
-		<snapshotRepository>
-    		  <id>nexus-snapshots</id>
-    		  <url>http://54.159.177.72:8081/nexus/content/maven-snapshots/snapshots</url>
-   		</snapshotRepository>
+	   <snapshotRepository>
+		  <id>maven-snapshots</id>
+		  <url>http://34.204.108.196:8081/repository/maven-snapshots/</url>
+	   </snapshotRepository>
+	   <repository>
+		  <id>maven-releases</id>
+		  <url>http://34.204.108.196:8081/repository/maven-releases/</url>
+	   </repository>
 	</distributionManagement>
 	
 	<dependencies>
@@ -32,25 +36,6 @@
                             <artifactId>maven-war-plugin</artifactId>
                             <version>3.2.2</version>
                         </plugin>
-			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>3.0.2</version>
-					<executions>
-						<execution>
-						<id>default-deploy</id>
-						<phase>deploy</phase>
-							<goals>
-								<goal>deploy</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<serverId>nexus</serverId>
-						<nexusUrl>http://54.159.177.72:8081//nexus/</nexusUrl>
-						<skipStaging>true</skipStaging>
-					</configuration>
-			</plugin>
 		</plugins>
 	</build>
 </project>
