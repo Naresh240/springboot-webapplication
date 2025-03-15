@@ -1,4 +1,4 @@
-# Deploy web application - changes added
+# Deploy web application
 test
 ## Pre-Requisites
 
