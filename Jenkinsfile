@@ -1,15 +1,19 @@
-pipeline {
+pipeline{
     agent any
-    stages {
-        stage("Checkout") {
-            steps {
-                git branch: 'main', 
-                    url: 'https://github.com/Naresh240/springboot-webapplication.git'
+    parameters {
+        string(name: 'MAVEN_GOAL', defaultValue: '', description: 'Enter the maven goal to build the artifact')
+    }
+    stages{
+        stage("Checkout"){
+            steps{
+                checkout scmGit(branches: [[name: '*/main']], 
+                                extensions: [], 
+                                userRemoteConfigs: [[url: 'https://github.com/Naresh240/springboot-webapplication.git']])
             }
         }
-        stage("Build_Artifact") {
-            steps {
-                sh "mvn clean package"
+        stage("Build_Artifact"){
+            steps{
+                sh "mvn clean ${MAVEN_GOAL}"
             }
         }
     }
