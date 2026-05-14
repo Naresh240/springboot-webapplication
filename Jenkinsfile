@@ -1,7 +1,7 @@
 pipeline{
     agent any
     parameters {
-        string(name: 'MAVEN_GOAL', defaultValue: '', description: 'Enter the maven goal to build the artifact')
+        choice(name: 'MAVEN_GOAL', choices: ['install', 'package'], description: 'Select the Maven goal to execute')
     }
     stages{
         stage("Checkout"){
